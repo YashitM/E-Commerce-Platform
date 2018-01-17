@@ -9,6 +9,9 @@
 				  <li class="active">Shopping Cart</li>
 				</ol>
 			</div>
+            {% for item in items_in_cart %}
+                {{ item.title }}
+            {% endfor %}
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
 					<thead>
