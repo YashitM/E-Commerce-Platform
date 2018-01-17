@@ -9,12 +9,8 @@ def index(request):
 
 def cart(request):
     if request.user.is_authenticated:
-        # cartItems = []
         item_ids = Cart.objects.filter(user_id=request.user.id)
-        # for i in item_ids:
         cartItems = [Item.objects.get(pk=i.item_id) for i in item_ids]
-            # print (i.item_id, type(i.item_id))
-            # cartItems.append(Item.objects.get(pk=i))
         return render(request, 'main/cart.html', {"items_in_cart": cartItems})
     else:
         return redirect('/login/')
