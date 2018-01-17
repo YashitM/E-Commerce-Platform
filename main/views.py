@@ -34,13 +34,18 @@ def add_to_cart(request, itemID):
         return redirect('/login/')
 
 
+def remove_from_cart(request, itemID):
+    Cart.objects.filter(item_id=itemID).delete()
+    return redirect('/cart/')
+
+
 class Register(View):
+
     form_class = Regform
 
     def get(self, request):
         form = self.form_class(None)
         return render(request, 'main/signup.html', {'form': form})
-
     def post(self, request):
         form = self.form_class(request.POST)
 
@@ -66,3 +71,5 @@ class Register(View):
                 return redirect('signup')
 
         return render(request, 'main/index.html', context=None)
+
+
