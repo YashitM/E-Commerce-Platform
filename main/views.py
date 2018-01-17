@@ -4,7 +4,8 @@ from main.models import Item, Cart
 
 
 def index(request):
-    return render(request, 'main/index.html', {"item": Item.objects.all().first()})
+    items = Item.objects.all()
+    return render(request, 'main/index.html', {"items": items})
 
 
 def cart(request):
