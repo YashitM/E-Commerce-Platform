@@ -849,7 +849,18 @@ h2.title {
 	border:1px solid #F7F7F5;
 	overflow: hidden;
 	margin-bottom:30px;
+    -webkit-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 10px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 0, 0, 0.1) inset;
+  transition: all 0.3s ease-in-out;
 }
+
+.product-image-wrapper:hover {
+    -webkit-box-shadow:0 1px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
+       -moz-box-shadow:0 1px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
+            box-shadow:0 1px 25px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 0, 0, 0.1) inset;
+}
+
 
 .single-products {
   position: relative;
