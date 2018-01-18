@@ -73,4 +73,5 @@ class Register(View):
 
 
 def shop(request):
-    return render(request, 'main/shop.html', context=None)
+    items = Item.objects.all()
+    return render(request, 'main/shop.html', {'items':items})
