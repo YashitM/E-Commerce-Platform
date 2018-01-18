@@ -23,33 +23,37 @@
 						</tr>
 					</thead>
 					<tbody>
-                        {% for item in items_in_cart %}
-                            <tr>
-                                <td class="cart_product">
-                                    <a href=""><img src="{{ item.image.url }}" alt=""></a>
-                                </td>
-                                <td class="cart_description">
-                                    <h4><a href="">{{ item.title }}</a></h4>
-                                    <p>Web ID: {{ item.id }}</p>
-                                </td>
-                                <td class="cart_price">
-                                    <p>Rs. {{ item.unit_price }}</p>
-                                </td>
-                                <td class="cart_quantity">
-                                    <div class="cart_quantity_button">
-{#                                        <a class="cart_quantity_up" href=""> + </a>#}
-                                        <input class="cart_quantity_input" type="text" name="quantity" value={{ item.quantity }} autocomplete="off" size="2" disabled="disabled">
-{#                                        <a class="cart_quantity_down" href=""> - </a>#}
-                                    </div>
-                                </td>
-                                <td class="cart_total">
-                                    <p class="cart_total_price">Rs {% multiply item.quantity item.unit_price %}</p>
-                                </td>
-                                <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href="{% url 'removeFromCart' item.id%}"><i class="fa fa-times"></i></a>
-                                </td>
-                            </tr>
-                        {% endfor %}
+                        {% if items_in_cart %}
+                            {% for item in items_in_cart %}
+                                <tr>
+                                    <td class="cart_product">
+                                        <a href=""><img src="{{ item.image.url }}" alt=""></a>
+                                    </td>
+                                    <td class="cart_description">
+                                        <h4><a href="">{{ item.title }}</a></h4>
+                                        <p>Web ID: {{ item.id }}</p>
+                                    </td>
+                                    <td class="cart_price">
+                                        <p>Rs. {{ item.unit_price }}</p>
+                                    </td>
+                                    <td class="cart_quantity">
+                                        <div class="cart_quantity_button">
+    {#                                        <a class="cart_quantity_up" href=""> + </a>#}
+                                            <input class="cart_quantity_input" type="text" name="quantity" value={{ item.quantity }} autocomplete="off" size="2" disabled="disabled">
+    {#                                        <a class="cart_quantity_down" href=""> - </a>#}
+                                        </div>
+                                    </td>
+                                    <td class="cart_total">
+                                        <p class="cart_total_price">Rs {% multiply item.quantity item.unit_price %}</p>
+                                    </td>
+                                    <td class="cart_delete">
+                                        <a class="cart_quantity_delete" href="{% url 'removeFromCart' item.id%}"><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            No Items in Cart
+                        {% endif %}
 					</tbody>
 				</table>
 			</div>

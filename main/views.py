@@ -1,4 +1,3 @@
-from django import forms
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -40,12 +39,12 @@ def remove_from_cart(request, itemID):
 
 
 class Register(View):
-
     form_class = Regform
 
     def get(self, request):
         form = self.form_class(None)
-        return render(request, 'main/signup.html', {'form': form})
+        return render(request, 'registration/signup.html', {'form': form})
+
     def post(self, request):
         form = self.form_class(request.POST)
 
@@ -73,3 +72,5 @@ class Register(View):
         return render(request, 'main/index.html', context=None)
 
 
+def shop(request):
+    return render(request, 'main/shop.html', context=None)
