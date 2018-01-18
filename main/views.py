@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.views import View
 
@@ -74,4 +74,9 @@ class Register(View):
 
 def shop(request):
     items = Item.objects.all()
-    return render(request, 'main/shop.html', {'items':items})
+    return render(request, 'main/shop.html', {'items': items})
+
+
+def product_details(request, item_id):
+    selected_item = get_object_or_404(Item, pk=item_id)
+    return render(request, 'main/product-details.html', {'item': selected_item})
