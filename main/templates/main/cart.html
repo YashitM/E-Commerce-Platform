@@ -31,7 +31,7 @@
                                     <a href=""><img src="{{ item.image.url }}" style="height: 70px; width: 70px;" alt=""></a>
                                 </td>
                                 <td class="cart_description">
-                                    <h4><a href="">{{ item.title }}</a></h4>
+                                    <h4><a href="{% url 'product_details' item.id %}">{{ item.title }}</a></h4>
                                     <p>Web ID: {{ item.id }}</p>
                                 </td>
                                 <td class="cart_price">
@@ -150,18 +150,20 @@
                             <div class="carousel-inner">
                                 <div class="item active">
                                     {% for recommended_item in recommended_items %}
-                                        <div class="col-sm-4">
-                                            <div class="product-image-wrapper">
-                                                <div class="single-products">
-                                                    <div class="productinfo text-center">
-                                                        <img src="{{ recommended_item.image.url }}" alt="" />
-                                                        <h2>Rs. {{ recommended_item.unit_price }}</h2>
-                                                        <p>{{ recommended_item.title }}</p>
-                                                        <a href="{% url 'addToCart' recommended_item.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="{% url 'product_details' recommended_item.id %}">
+                                            <div class="col-sm-4">
+                                                <div class="product-image-wrapper">
+                                                    <div class="single-products">
+                                                        <div class="productinfo text-center">
+                                                            <img src="{{ recommended_item.image.url }}" alt="" />
+                                                            <h2>Rs. {{ recommended_item.unit_price }}</h2>
+                                                            <p>{{ recommended_item.title }}</p>
+                                                            <a href="{% url 'addToCart' recommended_item.id %}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                     {% endfor %}
                                 </div>
                             </div>
