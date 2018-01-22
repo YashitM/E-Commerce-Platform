@@ -8,9 +8,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background:;
   position: relative;
-  font-weight:400px;
+  font-weight:400;
 }
 
 ul li {
@@ -904,13 +903,11 @@ h2.title {
 .product-overlay {
   background:#FE980F;
   top: 0;
-  display: none;
   height: 0;
   position: absolute;
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
 }
 
 .single-products:hover .product-overlay {
@@ -1180,6 +1177,8 @@ h2.title {
 
 .view-product {
   position: relative;
+  transition: all 0.3s ease-in-out;
+  z-index: 10000000;
 }
 
 .view-product img {
@@ -2532,3 +2531,13 @@ h2.title {
 }
 
 
+/* PRODUCT DETAILS */
+
+.view-product:hover {
+    position:relative;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
+}
