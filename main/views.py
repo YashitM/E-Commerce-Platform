@@ -16,7 +16,8 @@ def cart(request):
     if request.user.is_authenticated:
         item_ids = Cart.objects.filter(user_id=request.user.id)
         cartItems = [Item.objects.get(pk=i.item_id) for i in item_ids]
-        return render(request, 'main/cart.html', {"items_in_cart": cartItems})
+        filtered_items = [item for item in Item.objects.all()[:7]]
+        return render(request, 'main/cart.html', {"items_in_cart": cartItems, "recommended_items": filtered_items})
     else:
         return redirect('/login/')
 
