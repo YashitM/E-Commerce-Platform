@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.views import View
 
 from main.forms import Regform
-from main.models import Item, Cart
+from main.models import Item, Cart, Category
 
 
 def index(request):
@@ -79,4 +79,6 @@ def shop(request):
 
 def product_details(request, item_id):
     selected_item = get_object_or_404(Item, pk=item_id)
-    return render(request, 'main/product-details.html', {'item': selected_item})
+    filtered_items = [item for item in Category.objects.get(name=selected_item.category).item_set.all()[:7] if item.id != selected_item.id]
+
+    return render(request, 'main/product-details.html', {'item': selected_item, 'recommended_items': filtered_items})
